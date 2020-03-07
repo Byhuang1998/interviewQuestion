@@ -10,6 +10,9 @@ public class test {
         String[] s = new String[2];
         s = (String[]) vector.toArray(s);
         System.out.println(Arrays.toString(s));
+        String[] s1 = new String[2];
+        s1 = (String[]) vector.toArray(s);
+        System.out.println(s == s1);
 	}
 
 }
