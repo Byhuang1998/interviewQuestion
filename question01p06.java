@@ -4,23 +4,17 @@ public class question01p06 {
 		int len = S.length();
 		if (len==0 || len==1) return S;
 		String ans = "";
-		for (int i=0; i<len;) {
-			char cur = S.charAt(i);
-			int temNum = 0;
-			for (int j=i; j<len; j++) {
-				if (S.charAt(j)==cur) {
-					temNum++;
-				} else {
-					ans = ans + cur + temNum;
-					i = j;
-					break;
-				}
-				if (j==len-1) {
-					ans = ans + cur + temNum;
-					i = len;
-				}
+		char cur = S.charAt(0);
+		int count = 1;
+		for (int i=1; i<len; ++i) {
+			if (S.charAt(i)==cur) count++;
+			else {
+				ans = ans + cur + count;
+				count = 1;
+				cur = S.charAt(i);
 			}
 		}
+		ans = ans + cur + count;
 		int nlen = ans.length();
 		ans = nlen<len ? ans : S;
 		return ans;
