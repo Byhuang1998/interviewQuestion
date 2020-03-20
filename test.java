@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class test {
 	
@@ -17,10 +18,9 @@ public class test {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		test t = new test();
-		int[] nums = {1,2,3,5,4,-1,-5,7};
-		int ans = t.maxSubArray(nums);
-		System.out.println(ans);
+
+		String s = "123456";
+		System.out.println(789+s);
 	}
 
 }
