@@ -8,10 +8,10 @@ public class question62 {
 			nums.add(i);
 		}
 		int pointer = 0;
-		while (nums.size() != 1) {
-			int len = nums.size();
-			pointer = (m + pointer - 1) % len;
+		while (n != 1) {
+			pointer = (m + pointer - 1) % n;
 			nums.remove(pointer);
+			n--;
 		}
 		return nums.get(0);
 	}
