@@ -1,13 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
+
 public class question50 {
 
 	public char firstUniqChar(String s) {
-		Map<Character, Boolean> map = new HashMap<>();
 		char[] ss = s.toCharArray();
-		for (char c : ss) map.put(c, !map.containsKey(c));
+		char[] count = new char[128];
 		for (char c : ss) {
-			if (map.get(c) == true) return c;
+			count[c] ++;
+		}
+		for (char c : ss) {
+			if (count[c] == 1) return c;
 		}
 		return ' ';
 	}
