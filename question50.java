@@ -3,14 +3,11 @@ import java.util.Map;
 public class question50 {
 
 	public char firstUniqChar(String s) {
-		Map<Character, Integer> map = new HashMap<>();
+		Map<Character, Boolean> map = new HashMap<>();
 		char[] ss = s.toCharArray();
+		for (char c : ss) map.put(c, !map.containsKey(c));
 		for (char c : ss) {
-			if (! map.containsKey(c)) map.put(c, 1);
-			else map.put(c, map.get(c) + 1);
-		} 
-		for (char c : ss) {
-			if (map.get(c) == 1) return c;
+			if (map.get(c) == true) return c;
 		}
 		return ' ';
 	}
