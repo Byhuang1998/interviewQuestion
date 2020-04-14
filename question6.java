@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Arrays;
 public class question6 {
 
@@ -11,17 +11,17 @@ public class question6 {
 	}
 	
 	public int[] reversePrint(listnode head) {
-		ArrayList<Integer> list = new ArrayList<>();
+		Stack<Integer> s = new Stack<>();
 		listnode pointer = head;
 		while (pointer != null) {
-			list.add(pointer.val);
+			s.push(pointer.val);
 			if (pointer.next == null) break;
 			pointer = pointer.next;
 		}
-		int size = list.size();
+		int size = s.size();
 		int[] ans = new int[size];
 		for (int i=0; i<size; ++i) {
-			ans[i] = list.get(size-1-i);
+			ans[i] = s.pop();
 		}
 		return ans;
 	}
