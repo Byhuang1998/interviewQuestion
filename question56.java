@@ -6,21 +6,15 @@ public class question56 {
     	for (int num : nums) {
     		ret ^= num;
     	}
-    	int h = 1;
-    	while ((ret & h) == 0) {
-    		h <<= 1;
-    	}
+    	int h = ret & (-ret);
     	
     	int a = 0;
-    	int b = 0;
     	for (int num : nums) {
     		if ((num & h) == 0) {
     			a ^= num;
-    		} else {
-    			b ^= num;
     		}
     	}
-    	return new int[] {a, b};
+    	return new int[] {a, a^ret};
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
