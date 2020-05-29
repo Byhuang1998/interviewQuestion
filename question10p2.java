@@ -1,11 +1,12 @@
 class Solution {
-    int[] ans = new int[101];
     public int numWays(int n) {
-        ans[0] = ans[1] = 1;
-        ans[2] = 2;
-        for (int i = 3; i < 101; ++i) {
-            ans[i] = (ans[i-1] + ans[i-2]) % 1000000007;
+        if (n < 2) return 1;
+        int a = 1, b = 1, sum = 0;
+        for (int i = 2; i <= n; ++i) {
+            sum = (a + b) % 1000000007;
+            a = b;
+            b = sum;
         }
-        return ans[n];
+        return sum;
     }
 }
