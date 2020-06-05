@@ -1,25 +1,32 @@
 class Solution {
     public int[] spiralOrder(int[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            return new int[0];
-        }
-        int rows = matrix.length, columns = matrix[0].length;
-        boolean[][] visited = new boolean[rows][columns];
-        int total = rows * columns;
-        int[] order = new int[total];
-        int row = 0, column = 0;
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        int directionIndex = 0;
-        for (int i = 0; i < total; i++) {
-            order[i] = matrix[row][column];
-            visited[row][column] = true;
-            int nextRow = row + directions[directionIndex][0], nextColumn = column + directions[directionIndex][1];
-            if (nextRow < 0 || nextRow >= rows || nextColumn < 0 || nextColumn >= columns || visited[nextRow][nextColumn]) {
-                directionIndex = (directionIndex + 1) % 4;
+        int row = matrix.length;
+        if (row == 0) return new int[0];
+        int col = matrix[0].length;
+        boolean[][] visited = new boolean[row][col];
+        int[] ii = {0, 1, 0, -1};
+        int[] jj = {1, 0, -1, 0};
+        int num = row * col;
+        int index = 0;
+        int[] res = new int[num];
+        int i = 0, j = 0;
+        int change = 0;
+        int x = ii[change % 4];
+        int y = jj[change % 4];
+        while (index < num) {
+            if (j < 0 || j == col || i == row || visited[i][j]) {
+                change++;
+                i -= x;
+                j -= y;
+                x = ii[change % 4];
+                y = jj[change % 4];
+            } else {
+                res[index++] = matrix[i][j];
+                visited[i][j] = true;
             }
-            row += directions[directionIndex][0];
-            column += directions[directionIndex][1];
+            i += x;
+            j += y;
         }
-        return order;
+        return res;
     }
 }
